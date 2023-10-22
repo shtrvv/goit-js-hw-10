@@ -16,7 +16,7 @@ fetchBreeds()
     .then(data => {
         refs.select.innerHTML = createMarkupSelect(data);
         new SlimSelect({
-        select: `.breed-select`,
+        select: '.breed-select',
     });
 })
     .catch(() => {
