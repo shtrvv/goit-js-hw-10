@@ -39,15 +39,18 @@ function onSelectChange(e) {
         .then(data => {
             createMarkupWrap(data);
             refs.wrap.classList.remove('is-hidden');
+            refs.loader.classList.remove('is-hidden');
+            fetchBreeds()
+                .then(() => {
+                refs.loader.classList.add('is-hidden');
+            })
     })
     .catch(() => {
         refs.select.classList.add('is-hidden');
+        refs.loader.classList.add('is-hidden');
         Notiflix.Notify.failure('Oops! Something went wrong! Try reloading the page!');
     
     })
-    .finally(() => {
-    refs.loader.classList.add('is-hidden');
-})
 }
 
 function createMarkupSelect(arr) {
